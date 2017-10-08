@@ -27,3 +27,37 @@ CREATE TABLE Content (
     RegistrationDate TIMESTAMP,
     PRIMARY KEY (ContentID)
 );
+CREATE TABLE Status (
+	Content int NOT NULL, 
+	User int NOT NULL,
+	Liked int NOT NULL,
+	Faved int NOT NULL,
+	Watched int NOT NULL, 
+	Watching int NOT NULL, 
+	Dropped int NOT NULL,
+	Mark int NOT NULL,
+	FOREIGN KEY (User) REFERENCES Users(UserID),
+	FOREIGN KEY (Content) REFERENCES Content(ContentID)
+);
+CREATE TABLE Comments (
+	CommentId int NOT NULL, 
+	Content int NOT NULL, 
+	User int NOT NULL,
+	Comment TEXT(400) NOT NULL,
+	Parent int,
+	FOREIGN KEY (Parent) REFERENCES Comments(CommentId),
+	FOREIGN KEY (User) REFERENCES Users(UserID),
+	FOREIGN KEY (Content) REFERENCES Content(ContentID)
+);
+CREATE TABLE Posts (
+	PostID int NOT NULL, 
+	User int,
+	Comment int,
+	Content int,
+	Text TEXT(400) NOT NULL,
+
+	FOREIGN KEY (Comment) REFERENCES Comments(CommentId),
+	FOREIGN KEY (User) REFERENCES Users(UserID),
+	FOREIGN KEY (Content) REFERENCES Content(ContentID)
+
+);
