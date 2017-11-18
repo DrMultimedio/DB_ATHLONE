@@ -1,0 +1,35 @@
+#header{
+	height: 40vh;
+    background-color: lightblue;
+	margin: 0;
+	padding: 0;
+	
+}
+#register{
+	padding:10px;
+}
+#features{
+	padding:5px;
+    background-color: lightblue;
+
+}
+#title-register{
+	margin: 5px;
+}
+.button-register{
+	width:15em;
+}
+.my-navbar{
+	margin-bottom: 0;
+}
+.form-style{
+	background-color: white;
+	margin-bottom: 2px; 
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.features-element{
+	height: 40vh;
+	padding: 5px;
+}
