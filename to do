@@ -1,0 +1,18 @@
+-Validacion formularios
+-Poblar base de datos
+-Terminar diseño landing
+-Empezar diseño página de varios contenidos
+-Empezar diseño página contenido
+-Empezar diseño página de perfil de usuario
+-Empezar diseño de configuración de usuarios
+-Paginación
+-Checkiar fuentes
+
+Mejoras para login
+	-Regex para login, detectar si me pasan el correo o el usuario
+	-Capturar datos de login(saber desde donde logean, capturar ip, navegador, dispositivo, todos los datos recopilables posibles)
+
+Mejoras para registro
+	-Regex para comprobar contraseñas y correos
+	-La liada de las fechas 
+	-MD5 a las contraseñas u otros métodos

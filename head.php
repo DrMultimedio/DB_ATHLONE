@@ -14,5 +14,9 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<meta charset="UTF-8">
+<?php 
+  header('Content-Type: text/html; charset=utf-8');
+
+?> 
 	<title>Title of the document</title>
 </head>

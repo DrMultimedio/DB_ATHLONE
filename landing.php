@@ -22,26 +22,7 @@ include 'header.php';
 	
 <section id="register">
 
-<div class="container text-center">
-  <h1 id="title-register">Register, it's free !</h1>
-  <div class="row">
-    <div class="col-lg-2" >
-    <input type="text" class="form-control form-style" placeholder="Username">
-    </div>
-    <div class="col-lg-3" >
-    <input type="email" class="form-control form-style" placeholder="Email">
-    </div>
-    <div class="col-lg-2" >
-    <input type="password" class="form-control form-style" placeholder="Password">
-    </div>
-    <div class="col-lg-2" >
-    <input type="password" class="form-control form-style" placeholder="Repeat password">
-    </div>
-    <div class="col-lg-3" >
- 		 <button type="submit" class="btn btn-primary button-register">Submit</button>
-    </div>
-
-  </div>
+<?php include 'register_form.php' ?>
 </div>
 
 
