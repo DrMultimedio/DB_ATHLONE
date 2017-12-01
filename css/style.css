@@ -1,9 +1,23 @@
-#header{
+#header-landing{
 	height: 40vh;
     background-color: lightblue;
 	margin: 0;
 	padding: 0;
 	
+}
+#header-content{
+	height: 60vh;
+	background-color: lightblue;
+	margin:  0;
+	padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%; 
+	position: relative;
+
+}
+#content-page-container{
+	padding:1em;
 }
 #register{
 	padding:10px;
@@ -35,4 +49,27 @@
 }
 .createContent-wrapper{
 	padding: 1em;
+}
+.add-content{
+
+}
+.add-content>button{
+
+}
+.content-title{
+	position: absolute;
+    z-index: 2;
+	bottom:0;
+	background-color: rgba(0,0,0,0.4);
+	color: white; 
+	width: 100%
+}
+.content-title>h3{
+	margin:0.5em;
+}
+.content-img{
+
+}
+.content-img> img{
+	max-width: 300px;
 }

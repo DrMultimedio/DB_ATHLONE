@@ -2,7 +2,7 @@
 -Poblar base de datos
 -Terminar diseño landing
 -Empezar diseño página de varios contenidos
--Empezar diseño página contenido
+-Empezar diseño página contenidos 					DONE
 -Empezar diseño página de perfil de usuario
 -Empezar diseño de configuración de usuarios
 -Paginación
@@ -11,8 +11,12 @@
 Mejoras para login
 	-Regex para login, detectar si me pasan el correo o el usuario
 	-Capturar datos de login(saber desde donde logean, capturar ip, navegador, dispositivo, todos los datos recopilables posibles)
-
+	-Control de sesión
 Mejoras para registro
 	-Regex para comprobar contraseñas y correos
 	-La liada de las fechas 
 	-MD5 a las contraseñas u otros métodos
+Mejoras para contenido
+	-Ajustar imágenes
+Highcharts drilldown thing yatusabes
+Argo asi https://www.highcharts.com/demo/column-drilldown

@@ -9,7 +9,7 @@ include 'header.php';
 ?>
 
 
-    <section id="header">
+    <section id="header-landing">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center ">
