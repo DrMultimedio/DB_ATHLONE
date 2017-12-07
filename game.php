@@ -14,8 +14,8 @@ include 'header.php';
 	}
 	include "connection.php";
 
-	$sql = "SELECT * FROM content WHERE ContentID =" . $_GET['id'] . " AND Type = 'Serie'";
-	echo $sql;
+	$sql = "SELECT * FROM content WHERE ContentID =" . $_GET['id'];
+
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	    // output data of each row
@@ -23,7 +23,7 @@ include 'header.php';
 
 	} 
 	else {
-      	header("Location: 404.php"); /* Redirección del navegador */
+		//head to 404
 	    echo " 0 results";
 	}
 
@@ -119,7 +119,7 @@ include 'header.php';
 				<h4>Description</h4>
 				<p><?php echo $row['Description']?> </p>
 			    <div class="add-content">
-			    	<form method="POST" action="serie.php?id=<?php echo $_GET['id'] ?>">
+			    	<form method="POST" action="game.php?id=<?php echo $_GET['id'] ?>">
 				    	<label class="checkbox-inline"><input 
 				    		<?php if( $rowStatus['Completed'] == 1) echo "checked" ?>
 				    		type="checkbox" value="" id="completed" name="completed"

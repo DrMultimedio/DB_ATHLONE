@@ -10,7 +10,7 @@ include 'header.php';
 
 include "connection.php";
 
-$sql = "SELECT * FROM content WHERE type = 'Serie'";
+$sql = "SELECT * FROM content WHERE type = 'Game'";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
     $ids = array();
     $names = array();
     while($row = $result->fetch_assoc()) {
-        echo "<a href='serie.php?id=" . $row["ContentID"] ."'> - Name: " . $row["Name"]. " Tipo: " . $row["Type"] ."</a>";
+        echo "<a href='game.php?id=" . $row["ContentID"] ."'> - Name: " . $row["Name"]. " Tipo: " . $row["Type"] ."</a>";
         echo "<br>";
 
     }

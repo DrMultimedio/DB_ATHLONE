@@ -1,6 +1,11 @@
 
 
 <?php 
+
+    if(isset($_SESSION['login_user'])){
+      header("Location: landing.php"); /* Redirección del navegador */
+
+    }
       include 'connection.php';
 
      if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,17 +19,22 @@
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
       $count = mysqli_num_rows($result);
-      
       // If result matched $myusername and $mypassword, table row must be 1 row
         
       if($count == 1) {
-         
-      print_r($row); 
-      echo $row['UserId']; 
-      $sql2 = "INSERT INTO logins(User) VALUES (".$row['UserId'].") ";
-      mysqli_query($conn,$sql2);
-      }else {
+        print_r($row); 
+        echo $row['UserId']; 
+        $sql2 = "INSERT INTO logins(User) VALUES (".$row['UserId'].") ";
+        mysqli_query($conn,$sql2);
+        $_SESSION['login_user']= $row['UserId'];  // Initializing Session with value of PHP Variable
+        $_SESSION['username']= $_POST['username'];  // Initializing Session with value of PHP Variable
+
+        header("Location: landing.php"); /* Redirección del navegador */
+
+      }
+      else {
          $error = "Your Login Name or Password is invalid";
+         echo "wrong passaword hermano";
       }
    }
 
