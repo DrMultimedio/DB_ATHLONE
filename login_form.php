@@ -14,20 +14,25 @@
       $mypassword = $_POST['password']; 
   
       //add here MD5 
-      $sql = "SELECT UserId FROM users WHERE name = '$myusername' and password = '$mypassword'";
+      $sql = "SELECT UserId, Name, RegistrationDate, Password FROM users WHERE name = '$myusername'";
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      
+      $hash = sha1($row['RegistrationDate'] . $mypassword);
 
+      echo $hash. "<br>" ;
+      echo $row['Password'] . "<br>";
+      echo $mypassword . "<br>";
       $count = mysqli_num_rows($result);
-      // If result matched $myusername and $mypassword, table row must be 1 row
+
         
-      if($count == 1) {
+      if($row['Password'] == $hash) {
         print_r($row); 
         echo $row['UserId']; 
         $sql2 = "INSERT INTO logins(User) VALUES (".$row['UserId'].") ";
         mysqli_query($conn,$sql2);
         $_SESSION['login_user']= $row['UserId'];  // Initializing Session with value of PHP Variable
-        $_SESSION['username']= $_POST['username'];  // Initializing Session with value of PHP Variable
+        $_SESSION['username']= $row['Name'];  // Initializing Session with value of PHP Variable
 
         header("Location: landing.php"); /* Redirección del navegador */
 

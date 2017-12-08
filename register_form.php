@@ -1,12 +1,17 @@
 <?php 
       include 'connection.php';
+      echo isset($_SESSION['login_user']);
 
-     if($_SERVER["REQUEST_METHOD"] == "POST") {
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
 
       $username = $_POST['username'];
       $password = $_POST['password']; 
       $password2 = $_POST['password2']; 
       $email = $_POST['email']; 
+
+      if(isset($username)  && isset($password2)  && isset($password)  && isset($email) && !isset($_SESSION['login_user'])) {
+
+
 
       $correct = true;
       if($password == ""){
@@ -56,15 +61,31 @@
                "');" ;
                echo $sql;
               $result = mysqli_query($conn,$sql);
-              echo $result;                      
-          }
-       }
-      
+              echo $result; 
+          
+              $sql = "SELECT RegistrationDate, password FROM users WHERE name = '$username' ";
+              $result = mysqli_query($conn,$sql);
 
+                $row = $result->fetch_assoc();
+
+                print_r($row);
+              
+              $hash = sha1($row['RegistrationDate'] . $row['password']);
+
+              $sql3 = "UPDATE Users SET Password = '$hash' WHERE name ='$username' ";
+              echo $sql3; 
+              $result = mysqli_query($conn,$sql3);
+
+
+          
+        }
+      
+      }
       //add here MD5 
 
 
-   }
+    }
+  }
 
 ?>
 

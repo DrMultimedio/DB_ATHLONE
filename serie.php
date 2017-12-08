@@ -119,19 +119,21 @@ include 'header.php';
 				<h4>Description</h4>
 				<p><?php echo $row['Description']?> </p>
 			    <div class="add-content">
-			    	<form method="POST" action="serie.php?id=<?php echo $_GET['id'] ?>">
+			    	<form method="POST" action="
+					<?php if(isset($_SESSION['login_user'])){ echo "serie.php?id=" .$_GET['id'];} else echo "landing.php" ?>
+			    	">
 				    	<label class="checkbox-inline"><input 
-				    		<?php if( $rowStatus['Completed'] == 1) echo "checked" ?>
+				    		<?php if( isset($rowStatus) && $rowStatus['Completed'] == 1) echo "checked" ?>
 				    		type="checkbox" value="" id="completed" name="completed"
 	    			 	>Completed</label>
 						<label class="checkbox-inline"><input 
-							<?php if( $rowStatus['Watching'] == 1) echo "checked" ?>
+							<?php if(isset($rowStatus) &&  $rowStatus['Watching'] == 1) echo "checked" ?>
 							type="checkbox" value="" id="watching" name="watching">Watching</label>
 						<label class="checkbox-inline"><input 
-							<?php if( $rowStatus['Dropped'] == 1) echo "checked" ?>
+							<?php if(isset($rowStatus) &&  $rowStatus['Dropped'] == 1) echo "checked" ?>
 							type="checkbox" value="" id="dropped" name="dropped">Dropped</label>
 						<label class="checkbox-inline"><input 
-							<?php if( $rowStatus['Faved'] == 1) echo "checked" ?>
+							<?php if(isset($rowStatus) &&  $rowStatus['Faved'] == 1) echo "checked" ?>
 							type="checkbox" value="" id="fav" name="fav">Favourite</label>
 
 						<button type="submit" class=".btn-default">Add to my list</button>
