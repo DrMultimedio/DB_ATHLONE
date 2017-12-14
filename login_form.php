@@ -16,6 +16,11 @@
       //add here MD5 
       $sql = "SELECT UserId, Name, RegistrationDate, Password FROM users WHERE name = '$myusername'";
       $result = mysqli_query($conn,$sql);
+      if ($result->num_rows ==  0) {
+            header("Location: 404.php"); /* Redirección del navegador */
+          echo " 0 results";
+      }
+
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       
       $hash = sha1($row['RegistrationDate'] . $mypassword);

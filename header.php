@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  print_r($_SESSION);
+ // print_r($_SESSION);
 ?>
 <nav class="navbar navbar-default my-navbar">
   <div class="container-fluid">
@@ -44,8 +44,6 @@
             <li><a href="#">Comics</a></li>
             <li><a href="#">Books</a></li>
             <li><a href="#">Movies</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="createContent.php">Add something new</a></li>
 
           </ul>
         </li>

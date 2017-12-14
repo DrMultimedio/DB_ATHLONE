@@ -81,7 +81,7 @@ include 'header.php';
 
 	 			$resultUpdate = $conn->query($sqlUpdate);
 	     	}
-	     	echo $sqlUpdate;
+	     	//echo $sqlUpdate;
 		}	
 		$sqlActualStatus = "SELECT * FROM status WHERE Content =" . $_GET['id'] ." AND User = " .$_SESSION['login_user'] ;
 		$resultActualStatus = $conn->query($sqlActualStatus);

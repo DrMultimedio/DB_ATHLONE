@@ -74,7 +74,7 @@
 
               $sql3 = "UPDATE Users SET Password = '$hash' WHERE name ='$username' ";
               echo $sql3; 
-              $result = mysqli_query($conn,$sql3);
+              //$result = mysqli_query($conn,$sql3);
 
 
           

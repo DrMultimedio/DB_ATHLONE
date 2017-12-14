@@ -15,7 +15,7 @@ include 'header.php';
 	include "connection.php";
 
 	$sql = "SELECT * FROM content WHERE ContentID =" . $_GET['id'] . " AND Type = 'Serie'";
-	echo $sql;
+	//echo $sql;
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	    // output data of each row
@@ -24,7 +24,6 @@ include 'header.php';
 	} 
 	else {
       	header("Location: 404.php"); /* Redirección del navegador */
-	    echo " 0 results";
 	}
 
      if(isset($_SESSION['login_user'])) {
@@ -81,7 +80,7 @@ include 'header.php';
 
 	 			$resultUpdate = $conn->query($sqlUpdate);
 	     	}
-	     	echo $sqlUpdate;
+	     	//echo $sqlUpdate;
 		}	
 		$sqlActualStatus = "SELECT * FROM status WHERE Content =" . $_GET['id'] ." AND User = " .$_SESSION['login_user'] ;
 		$resultActualStatus = $conn->query($sqlActualStatus);
@@ -104,7 +103,7 @@ include 'header.php';
         </div>
 
       </div>
-      <div class='content-title'><h3>Titulo y eso</h3></div>
+      <div class='content-title'><h3><?php echo $row['Name']?></h3></div>
 
     </section>
 
@@ -115,7 +114,6 @@ include 'header.php';
 				<img class="" src=" <?php echo $row['Photo']?> "alt="">
 		    </div>
 		    <div class="col-lg-8" >
-				<h3><?php echo $row['Name']?></h3>
 				<h4>Description</h4>
 				<p><?php echo $row['Description']?> </p>
 			    <div class="add-content">
@@ -137,6 +135,9 @@ include 'header.php';
 							type="checkbox" value="" id="fav" name="fav">Favourite</label>
 
 						<button type="submit" class=".btn-default">Add to my list</button>
+
+						<a href="editContent.php?id=<?php echo $_GET['id']?>" > Edit</a>
+
 					</form>
 
 			    </div>

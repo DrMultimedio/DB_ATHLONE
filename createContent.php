@@ -8,7 +8,7 @@ include 'header.php';
 
 ?>
 <?php
-
+  if(isset($_SESSION['login_user'])){
       include 'connection.php';
 
      if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,6 +17,8 @@ include 'header.php';
       $type = $_POST['type']; 
       $author = $_POST['author']; 
       $photo = $_POST['photo']; 
+      $background = $_POST['background']; 
+
       $genre = $_POST['genre']; 
       $description = $_POST['description']; 
 
@@ -52,11 +54,12 @@ include 'header.php';
           else {
 
               $sql = "INSERT content 
-              (name, type, author, genre, photo, description)
+              (name, type, author, genre, photo, background,  description)
               VALUES('".
               $name ."','" .
               $type ."','" .
               $author."','" .
+              $background ."','" .
 	          $genre."','" .
 
               $photo . "','" .
@@ -68,6 +71,10 @@ include 'header.php';
           }
        }
    }
+ }
+ else{
+    header("Location: 404.php"); /* Redirección del navegador */
+ }
       
 ?>
 
@@ -98,6 +105,10 @@ include 'header.php';
 	    <label for="Photo">Photo:</label>
 	    <input type="text" class="form-control" id="photo" name = "photo">
 	  </div>
+    <div class="form-group">
+      <label for="Photo">Photo:</label>
+      <input type="text" class="form-control" id="background" name = "background">
+    </div>
 
 	  <div class="form-group">
 	    <label for="genre">Genre:</label>
