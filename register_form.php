@@ -2,7 +2,7 @@
       include 'connection.php';
       echo isset($_SESSION['login_user']);
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($username) && isset($email)){
 
       $username = $_POST['username'];
       $password = $_POST['password']; 

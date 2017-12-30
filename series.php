@@ -18,8 +18,7 @@ if ($result->num_rows > 0) {
     $ids = array();
     $names = array();
     while($row = $result->fetch_assoc()) {
-        echo "<a href='serie.php?id=" . $row["ContentID"] ."'> - Name: " . $row["Name"]. " Tipo: " . $row["Type"] ."</a>";
-        echo "<br>";
+    	include "contentElementNavigate.php";
 
     }
 } 

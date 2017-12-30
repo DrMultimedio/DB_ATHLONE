@@ -59,15 +59,25 @@ include 'header.php';
 	   			$watching = 1;
 
 	     	}
-	     	if(mysqli_num_rows($resultActualStatus) == 0){
+	     	if(isset($_POST['note']))
+	     	{
+	   			$note = $_POST['note'];
+	   			//prompt this somehow instead of echoing
+	   			//$error = "Not valid characters on the note, try again"; //implment this if we get a not valid char like ", with regex if possible
 
-		     	$sqlUpdate = "INSERT INTO status (Content, User, Completed, Dropped, Faved, Watching) values (" .
+	     	}
+
+	     	if(mysqli_num_rows($resultActualStatus) == 0 && !isset($error)){
+
+		     	$sqlUpdate = "INSERT INTO status (Content, User, Completed, Dropped, Faved, Watching, Note) values (" .
 		     	$_GET['id'] .", " .
 		     	$_SESSION['login_user'] .", " .
 		     	$completed .", " .
 		     	$dropped .", " .
 		     	$fav .", " .
-		     	$watching .")";
+		     	$watching .", \"" .
+		     	$note ."\")";
+
 	 			$resultUpdate = $conn->query($sqlUpdate);
 
 	     	}
@@ -75,12 +85,14 @@ include 'header.php';
 		     	$sqlUpdate = "UPDATE status SET Completed = " .$completed . ", ".
 				"Dropped = " . $dropped . ", " .
 				"Faved = " . $fav .", " .
-				"Watching = " . $watching .
+				"Watching = " . $watching . ", " .
+				"Note = \"" . $note . "\"" .
+
 				" WHERE Content =" . $_GET['id'] ." AND User = " .$_SESSION['login_user'];
 
 	 			$resultUpdate = $conn->query($sqlUpdate);
 	     	}
-	     	//echo $sqlUpdate;
+	     	echo $sqlUpdate;
 		}	
 		$sqlActualStatus = "SELECT * FROM status WHERE Content =" . $_GET['id'] ." AND User = " .$_SESSION['login_user'] ;
 		$resultActualStatus = $conn->query($sqlActualStatus);
@@ -132,8 +144,9 @@ include 'header.php';
 							type="checkbox" value="" id="dropped" name="dropped">Dropped</label>
 						<label class="checkbox-inline"><input 
 							<?php if(isset($rowStatus) &&  $rowStatus['Faved'] == 1) echo "checked" ?>
-							type="checkbox" value="" id="fav" name="fav">Favourite</label>
-
+							type="checkbox" value="" id="fav" name="fav">Favourite</label><br>
+						<label for="note">Note</label><br>
+						<textarea name="note" id="note" cols="50" rows="2"><?php if(isset($rowStatus) && isset($rowStatus['Note'])) echo $rowStatus['Note'] ?> </textarea><br>
 						<button type="submit" class=".btn-default">Add to my list</button>
 
 						<a href="editContent.php?id=<?php echo $_GET['id']?>" > Edit</a>

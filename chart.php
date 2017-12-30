@@ -43,7 +43,7 @@ $data_json = json_encode($data);
             type: 'column'
         },
         title: {
-            text: 'Basic drilldown'
+            text: 'Top series'
         },
         xAxis: {
             type: 'category'
