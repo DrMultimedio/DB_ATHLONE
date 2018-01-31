@@ -9,4 +9,5 @@ if(!isset($row))
 
 <a href="serie.php?id= <?php echo $row["ContentID"] ?>"> - Name: <?php echo $row["Name"] ?> Tipo: <?php echo $row["Type"]  ?></a>
 
+
 <br>

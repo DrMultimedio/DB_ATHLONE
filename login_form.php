@@ -24,7 +24,7 @@
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       
       $hash = sha1($row['RegistrationDate'] . $mypassword);
-
+      echo $row['RegistrationDate'] . "<br>";
       echo $hash. "<br>" ;
       echo $row['Password'] . "<br>";
       echo $mypassword . "<br>";

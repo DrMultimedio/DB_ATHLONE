@@ -2,12 +2,14 @@
       include 'connection.php';
       echo isset($_SESSION['login_user']);
 
-    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($username) && isset($email)){
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
 
       $username = $_POST['username'];
       $password = $_POST['password']; 
       $password2 = $_POST['password2']; 
       $email = $_POST['email']; 
+
+      echo $username . " " . $password . " " . $password2 . " " . $email  ; 
 
       if(isset($username)  && isset($password2)  && isset($password)  && isset($email) && !isset($_SESSION['login_user'])) {
 
@@ -74,7 +76,7 @@
 
               $sql3 = "UPDATE Users SET Password = '$hash' WHERE name ='$username' ";
               echo $sql3; 
-              //$result = mysqli_query($conn,$sql3);
+              $result = mysqli_query($conn,$sql3);
 
 
           
